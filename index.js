@@ -15,7 +15,7 @@ const app=express();
 
 var expressLayouts = require('express-ejs-layouts');
 
-const port=process.env.PORT;
+const port=process.env.PORT || 3000;
 
 const connectDB=require('./config/mongoose');
 
