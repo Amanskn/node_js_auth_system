@@ -51,6 +51,7 @@ app.use(session({
     name:'codeial',
     // TODO change the secret before deployment in production mode
     secret:process.env.SECRET_KEY,
+    // secret:"a",
     saveUninitialized:false,
     resave:false,
     cookie:{
@@ -62,7 +63,8 @@ app.use(session({
         mongoUrl : "mongodb://0.0.0.0:27017/social_media_3",
          autoremove : "disabled",
      },function(err){
-         console.log("error at mongo store",err || "connection established to store cookie");
+        //  console.log("error at mongo store",err || "connection established to store cookie");
+        return;
      })
 }));
 
@@ -85,10 +87,10 @@ app.use('/',require('./routes'));
 // server is going to fire up
 app.listen(port,function(err){
     if(err){
-        console.log("Error in running the server",err);
+        // console.log("Error in running the server",err);
         return;
     }
-    console.log(`Server is listening on port no : ${port}`);
+    // console.log(`Server is listening on port no : ${port}`);
     // console.log(process.env);
     return;
 })

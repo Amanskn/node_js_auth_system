@@ -7,10 +7,11 @@ const connectDB = async (DATABASE_URL)=>{
         // }
         // await mongoose.connect(DATABASE_URL,DB_OPTIONS);
         await mongoose.connect(DATABASE_URL);
-        console.log("Connected successfully to the database");
+        // console.log("Connected successfully to the database");
         
     } catch (error) {
-        console.log("Error in connecting to the database",error);
+        // console.log("Error in connecting to the database",error);
+        return;
     }
 }
 

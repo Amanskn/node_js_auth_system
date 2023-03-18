@@ -18,15 +18,15 @@ passport.use(new LocalStrategy({
             if(user)  {
                 const isMatch = await bcrypt.compare(password , user.password);
                 if(isMatch){
-                    console.log("yes Password matched");
+                    // console.log("yes Password matched");
                     return done(null,user);
                 }else{
 
-                    console.log("Password not matched Aman bhai");
+                    // console.log("Password not matched Aman bhai");
                     return done(null,false);    
                 }
             }else{
-                console.log("user not found");
+                // console.log("user not found");
                 return done(null,false);
             }
         }catch (error) {
@@ -41,14 +41,14 @@ passport.use(new LocalStrategy({
 
 // serializing the user to decide which key is to be kept in the cookies
 passport.serializeUser(function(user,done){
-    console.log("Serializer is called");
+    // console.log("Serializer is called");
     done(null,user.id);
 });
 
 
 // deserializing the user from the key in the cookies
 passport.deserializeUser( async function(id,done){
-    console.log('DeSerialize User is called ');
+    // console.log('DeSerialize User is called ');
     try {
         let user = await User.findById(id);
         if(user)
@@ -57,7 +57,7 @@ passport.deserializeUser( async function(id,done){
             return done(null,false);
         
     }catch (error) {
-        console.log("Error in finding a user-->Passport");
+        // console.log("Error in finding a user-->Passport");
         return done(err);
     }
     

@@ -43,6 +43,15 @@ module.exports.create = async  function(req,res){
                 if(password === password_confirmation) {
                     const salt = await bcrypt.genSalt(10);
                     const hashedPassword = await bcrypt.hash(password, salt);
+                    // bcrypt.hash(password,10)
+                    // .then((hashedPassword)=>{
+                    //     User.create({
+                    //         name: name,
+                    //         email: email,
+                    //         password: hashedPassword,
+                            
+                    //     });
+                    // })
                     await User.create({
                         name: name,
                         email: email,
@@ -107,7 +116,7 @@ module.exports.changeUserPassword = async (req,res)=>{
             if(user){
                 const isMatch = await bcrypt.compare(old_password, user.password);
                 if(isMatch){
-                    console.log("yes Old Password matched");
+                    // console.log("yes Old Password matched");
                     if(new_password === new_password_confirmation){
                         const salt = await bcrypt.genSalt(10);
                         const hashedPassword = await bcrypt.hash(new_password, salt);
@@ -126,7 +135,7 @@ module.exports.changeUserPassword = async (req,res)=>{
             
                         // 3rd one
                         await User.findByIdAndUpdate(req.user._id, { password: hashedPassword });
-                        console.log("Password updated");
+                        // console.log("Password updated");
                         return res.redirect('/');
             
             
@@ -137,13 +146,13 @@ module.exports.changeUserPassword = async (req,res)=>{
                     }
                 }else{
 
-                    console.log("Old Password Entered is wrong");
+                    // console.log("Old Password Entered is wrong");
                     return res.status(200).json({
                         message:'Old Password Entered is wrong'
                     })  
                 }
             }else{
-                console.log("Not a valid user");
+                // console.log("Not a valid user");
                 return res.status(200).json({
                     message:'Not a valid user'
                 })
