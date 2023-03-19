@@ -27,7 +27,7 @@ const passportGoogle=require('./config/passport-google-oauth2-strategy');
 
 const MongoStore=require('connect-mongo');
 
-connectDB(process.env.DATABASE_URL);
+// connectDB(process.env.DATABASE_URL);
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
