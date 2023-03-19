@@ -85,14 +85,19 @@ app.use(passport.setAuthenticatedUser);
 app.use('/',require('./routes'));
 
 // server is going to fire up
-app.listen(port,function(err){
-    if(err){
-        // console.log("Error in running the server",err);
+
+connectDB().then(()=>{
+    app.listen(port,function(err){
+        if(err){
+            console.log("Error in running the server",err);
+            return;
+        }
+        console.log(`Server is listening on port no : ${port}`);
+        // console.log(process.env);
         return;
-    }
-    // console.log(`Server is listening on port no : ${port}`);
-    // console.log(process.env);
-    return;
+    })
+    
+
 })
 
 

@@ -15,6 +15,20 @@ mongoose.set('strictQuery',false);
 //         return;
 //     }
 // }
-mongoose.connect(process.env.DATABASE_URL)
-.then(() => console.log('Connected! to the DB'));
+// mongoose.connect(process.env.DATABASE_URL)
+// .then(() => console.log('Connected! to the DB'));
 // module.exports=connectDB
+
+const connectDB = async ()=>{
+    try {
+        const conn = await mongoose.connect(process.env.DATABASE_URL);
+        console.log("Mongo DB connected Aman",conn.connection.host);
+
+        
+    } catch (error) {
+        console.log("Error in connection to Atlas",error);
+        process.exit(1);
+    }
+}
+
+module.exports = connectDB;
