@@ -86,19 +86,27 @@ app.use('/',require('./routes'));
 
 // server is going to fire up
 
-connectDB().then(()=>{
-    app.listen(port,function(err){
-        if(err){
-            console.log("Error in running the server",err);
-            return;
-        }
-        console.log(`Server is listening on port no : ${port}`);
-        // console.log(process.env);
-        return;
-    })
+// connectDB().then(()=>{
+//     app.listen(port,function(err){
+//         if(err){
+//             console.log("Error in running the server",err);
+//             return;
+//         }
+//         console.log(`Server is listening on port no : ${port}`);
+//         // console.log(process.env);
+//         return;
+//     })
     
 
+// })
+
+app.listen(port,function(err){
+    if(err){
+        console.log("Error in running the server",err);
+        return;
+    }
+    console.log(`Server is listening on port no : ${port}`);
+    // console.log(process.env);
+    return;
 })
-
-
 

@@ -1,5 +1,5 @@
-const mongoose=require("mongoose");
-mongoose.set('strictQuery',false);
+// const mongoose=require("mongoose");
+// mongoose.set('strictQuery',false);
 
 // const connectDB = async (DATABASE_URL)=>{
 //     try {
@@ -19,16 +19,38 @@ mongoose.set('strictQuery',false);
 // .then(() => console.log('Connected! to the DB'));
 // module.exports=connectDB
 
-const connectDB = async ()=>{
-    try {
-        const conn = await mongoose.connect(process.env.DATABASE_URL);
-        console.log("Mongo DB connected Aman",conn.connection.host);
+// const connectDB = async ()=>{
+//     try {
+//         const conn = await mongoose.connect(process.env.DATABASE_URL);
+//         console.log("Mongo DB connected Aman",conn.connection.host);
 
         
-    } catch (error) {
-        console.log("Error in connection to Atlas",error);
-        process.exit(1);
-    }
-}
+//     } catch (error) {
+//         console.log("Error in connection to Atlas",error);
+//         process.exit(1);
+//     }
+// }
+
+// module.exports = connectDB;
+
+
+
+
+
+
+
+const mongoose = require('mongoose')
+
+mongoose.set('strictQuery', false)
+
+mongoose.connect(process.env.DATABASE_URL)
+
+const connectDB = mongoose.connection;
+
+connectDB.on("error", console.error.bind(console, "Connection Problem"));
+
+connectDB.on("open", function(){
+    console.log("Connected successfully to MongoDB new")
+})
 
 module.exports = connectDB;
