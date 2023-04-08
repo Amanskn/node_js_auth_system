@@ -83,7 +83,7 @@ app.use(passport.setAuthenticatedUser);
 
 // loading the routes
 app.use('/',require('./routes'));
-
+     
 // server is going to fire up
 
 // connectDB().then(()=>{
